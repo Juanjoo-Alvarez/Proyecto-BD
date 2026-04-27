@@ -38,8 +38,6 @@ DB_NAME=
 PORT=5000
 ```
 
-👉 Copia este archivo como `.env` antes de ejecutar.
-
 ---
 
 # 🐳 Cómo ejecutar el proyecto

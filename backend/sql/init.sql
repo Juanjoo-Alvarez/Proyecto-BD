@@ -213,3 +213,16 @@ INSERT INTO descripcion_venta (id_venta, id_producto, cantidad, precio_unitario,
 (18,18,1,1800,1800),
 (19,19,1,1900,1900),
 (20,20,1,2000,2000);
+
+CREATE VIEW vista_reporte_ventas AS
+SELECT 
+    v.id_venta,
+    v.fecha,
+    c.nombre || ' ' || c.apellido AS cliente,
+    e.nombre || ' ' || e.apellido AS empleado,
+    SUM(dv.subtotal) AS total
+FROM venta v
+JOIN cliente c ON v.id_cliente = c.id_cliente
+JOIN empleado e ON v.id_empleado = e.id_empleado
+JOIN descripcion_venta dv ON v.id_venta = dv.id_venta
+GROUP BY v.id_venta, v.fecha, c.nombre, c.apellido, e.nombre, e.apellido;
