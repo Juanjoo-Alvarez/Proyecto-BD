@@ -14,11 +14,34 @@ GRANT SELECT, INSERT ON venta TO vendedor;
 
 GRANT SELECT ON vista_reporte_ventas TO gerente;
 
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO admin;
+
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO inventario;
+
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO vendedor;
+
+
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO admin;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO gerente;
+GRANT EXECUTE ON ALL FUNCTIONS IN SCHEMA public TO vendedor;
+
+
+REVOKE DELETE ON producto FROM auditor;
+
+REVOKE UPDATE ON venta FROM vendedor;
+
+
 CREATE USER admin1 WITH PASSWORD '123';
 GRANT admin TO admin1;
 
+CREATE USER gerente1 WITH PASSWORD '123';
+GRANT gerente TO gerente1;
+
 CREATE USER vendedor1 WITH PASSWORD '123';
 GRANT vendedor TO vendedor1;
+
+CREATE USER inventario1 WITH PASSWORD '123';
+GRANT inventario TO inventario1;
 
 CREATE USER auditor1 WITH PASSWORD '123';
 GRANT auditor TO auditor1;
