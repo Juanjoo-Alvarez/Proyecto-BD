@@ -40,7 +40,8 @@ const login = async (req, res) => {
         );
 
         res.json({
-            token
+            token,
+            rol: usuario.rol
         });
 
     } catch (error) {
