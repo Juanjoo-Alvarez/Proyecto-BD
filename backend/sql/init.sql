@@ -1,3 +1,10 @@
+CREATE TABLE usuario(
+    id_usuario SERIAL PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    rol VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE cliente(
 id_cliente SERIAL PRIMARY KEY,
 nombre VARCHAR(255) NOT NULL,
@@ -59,6 +66,14 @@ CREATE TABLE descripcion_venta(
   FOREIGN KEY (id_venta) REFERENCES venta(id_venta),
   FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
 );
+
+INSERT INTO usuario(username, password, rol)
+VALUES
+('admin', '123', 'admin'),
+('gerente', '123', 'gerente'),
+('vendedor', '123', 'vendedor'),
+('inventario', '123', 'inventario'),
+('auditor', '123', 'auditor');
 
 INSERT INTO categoria (nombre, descripcion) VALUES
 ('Electrónica','Dispositivos electrónicos'),
